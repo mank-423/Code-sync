@@ -1,7 +1,9 @@
-import {defineSchema, defineTable} from 'convex/server'
-import {v} from 'convex/values'
+import { defineSchema, defineTable } from 'convex/server'
+import { v } from 'convex/values'
 
 export default defineSchema({
+
+    // Users table
     users: defineTable({
         name: v.string(),
         email: v.string(),
@@ -9,4 +11,28 @@ export default defineSchema({
         role: v.union(v.literal("candidate"), v.literal("interviewer")), // "candidate" or "interviewer"
         clerkId: v.string(),
     }).index("by_clerk_id", ["clerkId"]),
+
+
+    // Interviews table
+    interviews: defineTable({
+        title: v.string(),
+        description: v.optional(v.string()),
+        startTime: v.number(),
+        endTime: v.optional(v.number()),
+        status: v.string(),
+        streamCallId: v.string(),
+        candidateId: v.string(),
+        interviewersIds: v.array(v.string()),
+    })
+    .index("by_candidate_id", ["candidateId"])
+    .index("by_stream_call_id", ["streamCallId"]),
+
+
+    // Comments table
+    comments: defineTable({
+        content: v.string(),
+        rating: v.number(),
+        interviewerId: v.string(),
+        interviewId: v.id("interviews"),
+    }).index("by_interview_id", ["interviewId"]),
 })
