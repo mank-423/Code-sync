@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "./button";
+
 import { SparkleIcon } from "lucide-react";
 import { useUserRole } from "@/hooks/useUserRole";
+import { Button } from "./ui/button";
 
 const DashboardBtn = () => {
 

@@ -1,5 +1,5 @@
 import { QuickActionType } from '@/constants'
-import { Card } from './card'
+import { Card } from './ui/card'
 
 // this is how gradient works
 // from-orange-500/10 via-orange-500/5 to-transparent
