@@ -7,6 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from './ui/dropdo
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 import { Button } from './ui/button';
 import EndCallButton from './EndCallButton';
+import CodeEditor from './CodeEditor';
 
 const MeetingRoom = () => {
 
@@ -98,7 +99,7 @@ const MeetingRoom = () => {
                 <ResizableHandle withHandle />
 
                 <ResizablePanel defaultSize={65} minSize={25}>
-
+                    <CodeEditor />
                 </ResizablePanel>
 
             </ResizablePanelGroup>
