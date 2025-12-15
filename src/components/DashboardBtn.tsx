@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 
 const DashboardBtn = () => {
 
-    const { isCandidate, isInterviewer, isLoading } = useUserRole();
+    const { isCandidate, isLoading } = useUserRole();
 
     if (isCandidate || isLoading) return null;
 

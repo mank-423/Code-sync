@@ -16,22 +16,24 @@ const MeetingSetup = ({ onSetupComplete }: MeetingSetupProp) => {
 
     const call = useCall();
 
-    if (!call) return null;
+    useEffect(() => {
+        if (isCameraDisabled) call?.camera.disable();
+        else call?.camera.enable();
+    }, [isCameraDisabled, call?.camera]);
 
     useEffect(() => {
-        if (isCameraDisabled) call.camera.disable();
-        else call.camera.enable();
-    }, [isCameraDisabled, call.camera]);
-
-    useEffect(() => {
-        if (isMicDisabled) call.microphone.disable();
-        else call.microphone.enable();
-    }, [isMicDisabled, call.microphone]);
+        if (isMicDisabled) call?.microphone.disable();
+        else call?.microphone.enable();
+    }, [isMicDisabled, call?.microphone]);
 
     const handleJoin = async () => {
-        await call.join();
+        await call?.join();
         onSetupComplete();
     };
+
+    if (!call) return null;
+
+
 
     return (
         <div className="min-h-screen flex items-center justify-center p-6 bg-background/95">
