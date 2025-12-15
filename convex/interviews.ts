@@ -29,7 +29,7 @@ export const getMyInterviews = query({
 
 
 
-export const getInterviewsBySteamCallId = query({
+export const getInterviewsByStreamCallId = query({
     args: {streamCallId: v.string()},
     handler: async (ctx, args) => {
         return await ctx.db.query("interviews").withIndex("by_stream_call_id", (q) => q.eq("streamCallId", args.streamCallId)).first();
